@@ -8,7 +8,7 @@ A BepInEx-based QoL mod for ULTRAKILL. Displays a **kill counter** and a **live 
 
 - Real-time kill count in the top-right corner (read from `StatsManager`).
 - Keyboard display in the top-left corner showing the currently pressed keys: `W A S D R F G SPACE SHIFT CTRL`.
-- Configurable positions via `BepInEx/config/com.scainest.killoverlay.cfg` (X/Y offsets for each overlay). Use [BepInEx Configuration Manager](https://github.com/BepInEx/BepInEx.ConfigurationManager) to edit live in-game with F1.
+- Configurable positions via `BepInEx/config/com.scainest.killoverlay.cfg` (X/Y offsets for each overlay).
 - **AltGr** key cycles through presets:
   1. Kill + Keyboard (both visible)
   2. Kill only
@@ -43,7 +43,7 @@ ULTRAKILL için BepInEx tabanlı bir QoL modu. Ekranda **kill sayacını** ve **
 
 - Sağ üst köşede anlık kill sayısı (`StatsManager` üzerinden okunur).
 - Sol üst köşede o an basılan tuşları gösteren keyboard display: `W A S D R F G SPACE SHIFT CTRL`.
-- Konumlar `BepInEx/config/com.scainest.killoverlay.cfg` dosyasından ayarlanabilir (her overlay için X/Y offset). Oyun içinde anlık değişiklik için [BepInEx Configuration Manager](https://github.com/BepInEx/BepInEx.ConfigurationManager) modunu kurup F1'e basabilirsin.
+- Konumlar `BepInEx/config/com.scainest.killoverlay.cfg` dosyasından ayarlanabilir (her overlay için X/Y offset).
 - **AltGr** tuşuyla preset döngüsü:
   1. Kill + Keyboard (ikisi de açık)
   2. Sadece Kill
