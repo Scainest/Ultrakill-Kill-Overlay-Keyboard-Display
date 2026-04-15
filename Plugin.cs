@@ -1,15 +1,31 @@
 using BepInEx;
+using BepInEx.Configuration;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UltrakillKillOverlay
 {
-    [BepInPlugin("com.scainest.killoverlay", "ULTRAKILL Kill Overlay", "1.1.0")]
+    [BepInPlugin("com.scainest.killoverlay", "ULTRAKILL Kill Overlay", "1.3.0")]
     public class Plugin : BaseUnityPlugin
     {
+        // Config'ler BepInEx/config/com.scainest.killoverlay.cfg dosyasından düzenlenebilir
+        internal static ConfigEntry<int> KillOffsetX;
+        internal static ConfigEntry<int> KillOffsetY;
+        internal static ConfigEntry<int> KeyOffsetX;
+        internal static ConfigEntry<int> KeyOffsetY;
+
         private void Awake()
         {
+            KillOffsetX = Config.Bind("KillOverlay", "OffsetX", -30,
+                "Kill sayacının sağ kenardan yatay uzaklığı (negatif = sağdan içe)");
+            KillOffsetY = Config.Bind("KillOverlay", "OffsetY", -20,
+                "Kill sayacının üst kenardan dikey uzaklığı (negatif = üstten aşağı)");
+            KeyOffsetX = Config.Bind("KeyboardDisplay", "OffsetX", 16,
+                "Keyboard display'in sol kenardan yatay uzaklığı");
+            KeyOffsetY = Config.Bind("KeyboardDisplay", "OffsetY", 16,
+                "Keyboard display'in üst kenardan dikey uzaklığı");
+
             SceneManager.sceneLoaded += OnSceneLoaded;
             SpawnHost();
         }
@@ -95,7 +111,7 @@ namespace UltrakillKillOverlay
             rt.anchorMin = new Vector2(1f, 1f);
             rt.anchorMax = new Vector2(1f, 1f);
             rt.pivot     = new Vector2(1f, 1f);
-            rt.anchoredPosition = new Vector2(-30f + offset.x, -20f + offset.y);
+            rt.anchoredPosition = new Vector2(Plugin.KillOffsetX.Value + offset.x, Plugin.KillOffsetY.Value + offset.y);
             rt.sizeDelta = new Vector2(600f, 160f);
 
             var t = textGo.AddComponent<Text>();
@@ -115,7 +131,7 @@ namespace UltrakillKillOverlay
     {
         private const float KEY = 48f;
         private const float GAP = 5f;
-        private const float PAD = 16f;
+        // PAD artık Plugin.KeyOffsetX/Y üzerinden dinamik geliyor
 
         private static readonly Color BgIdle    = new Color(0f, 0f, 0f, 0.55f);
         private static readonly Color BgPressed = new Color(0.85f, 0.05f, 0.05f, 0.95f);
@@ -141,14 +157,16 @@ namespace UltrakillKillOverlay
             Font font = Resources.GetBuiltinResource<Font>("Arial.ttf")
                         ?? Font.CreateDynamicFontFromOSFont("Arial", 30);
 
-            float row1Y = -PAD;
-            float row2Y = -(PAD + KEY + GAP);
-            float row3Y = -(PAD + (KEY + GAP) * 2f);
-            float col1X = PAD;
-            float col2X = PAD + (KEY + GAP);
-            float col3X = PAD + (KEY + GAP) * 2f;
-            float col4X = PAD + (KEY + GAP) * 3f;
-            float col5X = PAD + (KEY + GAP) * 4f;
+            float padX = Plugin.KeyOffsetX.Value;
+            float padY = Plugin.KeyOffsetY.Value;
+            float row1Y = -padY;
+            float row2Y = -(padY + KEY + GAP);
+            float row3Y = -(padY + (KEY + GAP) * 2f);
+            float col1X = padX;
+            float col2X = padX + (KEY + GAP);
+            float col3X = padX + (KEY + GAP) * 2f;
+            float col4X = padX + (KEY + GAP) * 3f;
+            float col5X = padX + (KEY + GAP) * 4f;
 
             MakeKey(canvasGo.transform, font, "W", new Vector2(col2X, row1Y), KEY, KEY,
                     out _wBg, out _wTx, out _wOl);
