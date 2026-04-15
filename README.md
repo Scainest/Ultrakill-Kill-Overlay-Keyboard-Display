@@ -15,11 +15,12 @@ A BepInEx-based QoL mod for ULTRAKILL. Displays a **kill counter** and a **live 
 ## Installation
 
 1. Install [BepInEx](https://github.com/BepInEx/BepInEx) for ULTRAKILL.
-2. Drop `UltrakillKillOverlay.dll` into:
+2. Download `UltrakillKillOverlay.dll` from the [latest release](https://github.com/Scainest/Ultrakill-Kill-Overlay-Keyboard-Display/releases/latest).
+3. Drop it into:
    ```
    <ULTRAKILL>\BepInEx\plugins\
    ```
-3. Launch the game.
+4. Launch the game.
 
 ## Build
 
@@ -48,11 +49,12 @@ ULTRAKILL için BepInEx tabanlı bir QoL modu. Ekranda **kill sayacını** ve **
 ## Kurulum
 
 1. ULTRAKILL için [BepInEx](https://github.com/BepInEx/BepInEx) yüklü olmalı.
-2. `UltrakillKillOverlay.dll` dosyasını şu klasöre atın:
+2. `UltrakillKillOverlay.dll` dosyasını [en son sürümden](https://github.com/Scainest/Ultrakill-Kill-Overlay-Keyboard-Display/releases/latest) indirin.
+3. Şu klasöre atın:
    ```
    <ULTRAKILL>\BepInEx\plugins\
    ```
-3. Oyunu başlatın.
+4. Oyunu başlatın.
 
 ## Derleme
 
