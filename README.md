@@ -1,5 +1,7 @@
 # Ultrakill Kill Overlay + Keyboard Display
 
+### [⬇️ Download UltrakillKillOverlay.dll](https://github.com/Scainest/Ultrakill-Kill-Overlay-Keyboard-Display/raw/main/UltrakillKillOverlay.dll) · [📦 Releases](https://github.com/Scainest/Ultrakill-Kill-Overlay-Keyboard-Display/releases/latest)
+
 A BepInEx-based QoL mod for ULTRAKILL. Displays a **kill counter** and a **live keyboard display** on screen at the same time.
 
 ## Features
